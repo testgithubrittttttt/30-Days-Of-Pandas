@@ -1,0 +1,41 @@
+import pandas as pd
+
+def find_customers(customers: pd.DataFrame, orders: pd.DataFrame) -> pd.DataFrame:
+    # Create the filter of all the customer who doesn't appear in 'orders'
+    filter = ~customers["id"].isin(orders["customerId"])
+
+    # Filter the DataFrame to get the non-buyers
+    non_buyers = customers[filter]
+
+    # Select the proper column and rename it
+    result = non_buyers[['name']].rename(columns={'name':"Customers"})
+
+    # Return the result
+    return result
+
+EXPLANATION = 
+
+- Imports:
+  import pandas as pd: This line imports the pandas library, which is essential for working with DataFrames in Python. DataFrames are tabular data structures similar to spreadsheets and are widely used for data analysis.
+
+- Function Definition:
+  def find_customers(customers: pd.DataFrame, orders: pd.DataFrame) -> pd.DataFrame:: This defines a function named find_customers. It takes two arguments:
+   - customers: This is expected to be a pandas DataFrame containing information about customers. It's assumed to have a column named id that uniquely identifies each customer.
+   - orders: This is another pandas DataFrame containing information about orders. It's assumed to have a column named customerId that links each order to the customer who placed it.
+  The function's return type is specified as pd.DataFrame, indicating that it will return a new pandas DataFrame containing the identified non-buying customers.
+
+- Identifying Non-Buying Customers:
+  - filter = ~customers["id"].isin(orders["customerId"]): This line creates a boolean filter that identifies customers who are not present in the orders DataFrame.
+     customers["id"]: This accesses the id column of the customers DataFrame.
+     .isin(orders["customerId"]): This checks if the id values in the customers DataFrame are present in the customerId column of the orders DataFrame.
+     ~: The tilde (~) operator negates the result. So, the filter will be True for customers whose id is not found in customerId, indicating they have no corresponding orders.
+  - non_buyers = customers[filter]: This line filters the customers DataFrame based on the created filter. Only rows where the filter is True (i.e., customers not found in orders) will be included in the non_buyers DataFrame.
+
+- Selecting and Renaming:
+
+  result = non_buyers[['name']].rename(columns={'name':"Customers"}): This line extracts and renames the desired column from the non_buyers DataFrame.
+  - non_buyers[['name']]: This selects only the name column from the non_buyers DataFrame.
+  - .rename(columns={'name':"Customers"}): This renames the selected name column to "Customers".
+
+- Returning the Result:
+  return result: Finally, the function returns the result DataFrame, which contains only the "Customers" (names) of those who never placed an order.
