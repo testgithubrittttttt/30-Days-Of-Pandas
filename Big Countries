@@ -1,0 +1,24 @@
+import pandas as pd
+
+# Assuming you have a DataFrame named 'df' containing your data
+
+# Filter the DataFrame based on the conditions
+filtered_df = df[ (df['population'] >= 25000000) | (df['area'] >= 3000000) ]
+
+# Select the desired columns (name, population, area)
+result_df = filtered_df[['name', 'population', 'area']]
+
+# Print the result (optional)
+print(result_df)
+
+
+Explanation = 
+- Import pandas: We import the pandas library to work with DataFrames.
+
+- Filter DataFrame: We use boolean indexing to filter the DataFrame (df).
+  - We create a condition where either population is greater than or equal to 25 million (>= 25000000) or area is greater than or equal to 3 million (>= 3000000).
+  - The | operator represents the logical OR between these conditions.
+
+-Select Columns: We select the desired columns ('name', 'population', 'area') from the filtered DataFrame and store it in result_df.
+
+-Print Result (optional): This line is for demonstration purposes and can be removed. It prints the resulting DataFrame containing rows where either population is above 25 million or area is above 3 million.
