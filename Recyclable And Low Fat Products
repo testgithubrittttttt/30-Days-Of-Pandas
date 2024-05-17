@@ -1,0 +1,25 @@
+import pandas as pd
+
+# Assuming you have a DataFrame named 'df' containing product data
+
+# Filter products based on low_fats and recyclable
+filtered_df = df[(df['low_fats'] == 'Y') & (df['recyclable'] == 'Y')]
+
+# Select product_id
+result_df = filtered_df[['product_id']]
+
+# Print the result (optional)
+print(result_df)
+
+
+Explanation:
+
+- Import pandas: We import the pandas library.
+
+- Filter Products: We use boolean indexing to filter the DataFrame (df).
+   - We create a condition where low_fats must be equal to 'Y' (== 'Y') and recyclable must also be equal to 'Y' (== 'Y').
+   - The & operator represents the logical AND between these conditions.
+
+- Select product_id: We select the 'product_id' column from the filtered DataFrame and store it in result_df.
+
+- Print Result (optional): This line is for demonstration purposes. It prints the resulting DataFrame containing only the product_id for products that are both low-fat and recyclable.
