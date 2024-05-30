@@ -1,0 +1,20 @@
+import pandas as pd
+
+def find_patients(patients: pd.DataFrame) -> pd.DataFrame:
+    # Use the str.contains() method to find patients with Type I Diabetes
+    patients_with_diabetes = patients[patients['conditions'].str.contains(r'\bDIAB1')]
+    
+    # Select only the required columns
+    result_df = patients_with_diabetes[['patient_id', 'patient_name', 'conditions']]
+    
+    return result_df
+
+# Example usage:
+# data = {
+#     'patient_id': [1, 2, 3, 4],
+#     'patient_name': ['Alice', 'Bob', 'Charlie', 'David'],
+#     'conditions': ['DIAB1 HYP1', 'HYP2 DIAB2', 'DIAB1 DIAB2', 'HYP1']
+# }
+# patients_df = pd.DataFrame(data)
+# result = find_patients(patients_df)
+# print(result)
