@@ -1,0 +1,6 @@
+import pandas as pd
+
+def article_views(views: pd.DataFrame) -> pd.DataFrame:
+    V_filtered = df[df['author_id'] == df['viewer_id']]  # Filter for rows where author_id matches viewer_id
+    df_result = df_filtered.groupby('author_id')['author_id'].first().reset_index()  # Get distinct author_ids and rename as 'id'
+    df_result = df_result.sort_values(by='id')  # Sort by 'id' in ascending order 
